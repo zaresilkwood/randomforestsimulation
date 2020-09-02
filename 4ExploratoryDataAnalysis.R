@@ -2,6 +2,31 @@ summary(analysisdata)
 str(analysisdata)
 boxplot(analysisdata$AMT_INCOME_TOTAL)
 
+#Normality Check
+library(nortest)
+analysisdata_num <- analysisdata[,c(5,9,10)]
+
+current_check <- analysisdata_num$AMT_INCOME_TOTAL
+mean(current_check)
+sd(current_check)
+ks.test(current_check, y = "pnorm", mean = mean(current_check),
+        sd = sd(current_check))
+pearson.test(current_check)
+
+current_check <- analysisdata_num$DAYS_BIRTH
+mean(current_check)
+sd(current_check)
+ks.test(current_check, y = "pnorm", mean = mean(current_check),
+        sd = sd(current_check))
+pearson.test(current_check)
+
+current_check <- analysisdata_num$DAYS_EMPLOYED
+mean(current_check)
+sd(current_check)
+ks.test(current_check, y = "pnorm", mean = mean(current_check),
+        sd = sd(current_check))
+pearson.test(current_check)
+
 #Income
 #Boxplot 
 analysisdata %>%
@@ -18,9 +43,6 @@ analysisdata %>%
   labs(y = "Number of People", x ="Income") +
   ggsave("incomehistogram.png", width = 6,
          path = "D:/OneDrive - University of Leeds/@Master Dissertation@/Latex File/image")
-
-analysisdata %>%
-  str()
 
 #Days Birth
 #Boxplot 
@@ -56,3 +78,5 @@ analysisdata %>%
   labs(y = "Number of People", x = "Days Employed") +
   ggsave("employedhistogram.png", width = 6,
          path = "D:/OneDrive - University of Leeds/@Master Dissertation@/Latex File/image")
+
+

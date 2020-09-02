@@ -125,4 +125,4 @@ for (i in 1:10) {
   withoutnoisenorm2e[[i]] <- importance(rf_withoutnoisenorm2, type = 1, scale = F)
 }
 
-compareplot_imp(withoutnoisenorm1e, withoutnoisenorm2e, "withoutnoisenorm.png")
+compareplot_imp(withoutnoisenorm1e, withoutnoisenorm2e, "withoutnoisenorm7.png")
