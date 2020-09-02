@@ -1,5 +1,5 @@
 # randomforestsimulation
-This code is part of the random forest simulation for my dissertation. Any question about the simulation can be addressed to Widya Pranayoga (mm19wap@leeds.ac.uk).
+This code is part of the random forest simulation for my dissertation. Any question about the simulation can be addressed to Widya Pranayoga, University of Leeds (mm19wap@leeds.ac.uk).
 
 Abstract:
 
