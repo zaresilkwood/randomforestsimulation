@@ -2,11 +2,11 @@
 ########### Plot Simulation Importance Function ############
 
 
-### REMINDER ###
 ### plotimportance >> require random forest object
 ### plot_imp_from_list >> require list of many random forest trial
 ### compareplot_imp >> comparing two list of result from random forest
 ### plot_imp_list >> require list of many random forest trial, result will be ordered
+### compareplot_imp_wolist >> for plotting the case study data
 
 #Function to Create Plot from Random Forest
 plotimportance <- function(rfname, saverf){
