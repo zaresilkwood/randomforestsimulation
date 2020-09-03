@@ -170,3 +170,63 @@ for (i in 1:10) {
 }
 
 compareplot_imp(withnoisecomb1, withnoisecomb2, "Bwithnoisecomb.png")
+
+#Another random variable using different number of trial
+#Combined variable version 1
+withnoisecomb1 <- list()
+
+for (i in 1:10) {
+  group11 <- normalgroup1(1500, 3, 0, 1, 0)
+  group11 <- group11[,1:3]
+  group21 <- normalgroup2(1000, 3, 0, 0.1, 1, 1)
+  group21 <- group21[,1:3]
+  
+  group12 <- binomgroup1(1500, 3, 1, 0.5, 0)
+  group12 <- group12[,1:3]
+  group22 <- binomgroup2(1000, 3, 1, 0.5, 0.7, 1)
+  group22 <- group22[,1:3]
+  
+  group13 <- categoricalgroup2(1500, 3, 1, 2, 1, 0)
+  group23 <- categoricalgroup3(1000, 3, 1, 2, 1, 1)
+  
+  group1 <- cbind(group11, group12, group13)
+  group2 <- cbind(group21, group22, group23)
+  
+  withnoisecomb_data1 <- rbind(group1, group2)
+  withnoisecomb_data1$random <- rbinom(2500, 3, 0.6)
+  
+  rf_withnoisecomb1 <- randomForest(y~., data = withnoisecomb_data1,
+                                    importance = T, localImp = T)
+  withnoisecomb1[[i]] <- importance(rf_withnoisecomb1, type = 1, scale = F)
+}
+
+#Combined variable version 2
+withnoisecomb2 <- list()
+
+for (i in 1:10) {
+  group11 <- normalgroup1(1500, 3, 0, 1, 0)
+  group11 <- group11[,1:3]
+  group21 <- normalgroup2(1000, 3, 0, 0.2, 1, 1)
+  group21 <- group21[,1:3]
+  
+  group12 <- binomgroup1(1500, 3, 1, 0.5, 0)
+  group12 <- group12[,1:3]
+  group22 <- binomgroup2(1000, 3, 1, 0.5, 0.8, 1)
+  group22 <- group22[,1:3]
+  
+  group13 <- categoricalgroup2(1500, 3, 1, 2, 2, 0)
+  group23 <- categoricalgroup3(1000, 3, 1, 2, 2, 1)
+  
+  group1 <- cbind(group11, group12, group13)
+  group2 <- cbind(group21, group22, group23)
+  
+  withnoisecomb_data2 <- rbind(group1, group2)
+  withnoisecomb_data2$random <- rbinom(2500, 3, 0.65)
+  
+  rf_withnoisecomb2 <- randomForest(y~., data = withnoisecomb_data2,
+                                    importance = T, localImp = T)
+  
+  withnoisecomb2[[i]] <- importance(rf_withnoisecomb2, type = 1, scale = F)
+}
+
+compareplot_imp(withnoisecomb1, withnoisecomb2, "Bwithnoisecomb_numberoftrial.png")

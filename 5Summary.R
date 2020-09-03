@@ -21,6 +21,48 @@ df %>%
   ggsave("graphmean.png", width = 3, height = 2,
        path = "D:/OneDrive - University of Leeds/@Master Dissertation@/Latex File/image")
 
+#Graph for Different Mean, bigger version
+label <- paste0("X", 1:5)
+mean  <- seq(500,by = 60, length.out = 5) 
+lower <- mean - 25
+upper <- mean + 25
+
+df <- data.frame(label, mean, lower, upper)
+
+# reverses the factor level ordering for labels after coord_flip()
+df$label <- factor(df$label, levels=rev(df$label))
+
+df %>%
+  ggplot(aes(x=mean, y=label, xmin=lower, xmax=upper)) +
+  geom_point() + 
+  geom_errorbarh(height=.1)+
+  #coord_flip() +  # flip coordinates (puts labels on y axis)
+  xlab("Mean and Standard Deviation") + ylab("Variable") +
+  theme_bw() + # use a white background
+  ggsave("graphmean_higher.png", width = 3, height = 2,
+         path = "D:/OneDrive - University of Leeds/@Master Dissertation@/Latex File/image")
+
+#Graph for Different Mean, bigger version
+label <- paste0("X", 1:5)
+mean  <- seq(500,by = 200, length.out = 5) 
+lower <- mean - 25
+upper <- mean + 25
+
+df <- data.frame(label, mean, lower, upper)
+
+# reverses the factor level ordering for labels after coord_flip()
+df$label <- factor(df$label, levels=rev(df$label))
+
+df %>%
+  ggplot(aes(x=mean, y=label, xmin=lower, xmax=upper)) +
+  geom_point() + 
+  geom_errorbarh(height=.1)+
+  #coord_flip() +  # flip coordinates (puts labels on y axis)
+  xlab("Mean and Standard Deviation") + ylab("Variable") +
+  theme_bw() + # use a white background
+  ggsave("graphmean_higher2.png", width = 3, height = 2,
+         path = "D:/OneDrive - University of Leeds/@Master Dissertation@/Latex File/image")
+
 #Graph for different standard deviation
 label <- paste0("X", 1:5)
 mean  <- rep(0,5) 
